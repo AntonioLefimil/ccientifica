@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Computacion Científica UNAB</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">		
+		<link href="../webapp/static/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">		
+		<link href="../webapp/static/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">		
+		<link href="../webapp/static/css/owl.theme.css" rel="stylesheet" type="text/css" media="all">		
+		<link href="../webapp/static/css/owl.transitions.css" rel="stylesheet" type="text/css" media="all">
+		<link href="../webapp/static/css/layout.css" rel="stylesheet" type="text/css" media="all">				
+	</head>
+	<body id="top">
+		<div class="wrapper row0">
+			<div id="topbar" class="clear">
+			<div class="fl_right">
+				<ul class="faico clear">
+					<li><a href="https://github.com/Jupaba/ccientifica"><i class="fa fa-github"></i></a></li>
+					<li><a href="http://stackoverflow.com/"><i class="fa fa-stack-overflow"></i></a></li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		<header id="header" class="clear">
+			<div class="logo" style="float:left;">
+				<img src="../webapp/static/images/logo-unab.png" width="225px" alt=""></img>
+				</div>
+				<nav id="mainav" class="clear" style="float:right;"> 
+					<ul class="clear">
+						<li class="active"><a href="../">Home</a></li>
+						<li><a class="drop" href="#">Raices de Ecuaciones</a>
+							<ul>
+								<li><a href="../raices-de-ecuaciones/metodo-biseccion">Método de Bisección</a></li>
+								<li><a href="../raices-de-ecuaciones/metodo-brent">Método de Brent</a></li>
+								<li><a href="../raices-de-ecuaciones/metodo-secante">Método de La Secante</a></li>
+								<!--<li><a href="../raices-de-ecuaciones/metodo-puntofijo">Método del Punto Fijo</a></li>-->
+								<li><a href="../raices-de-ecuaciones/metodo-reglafalsa">Método de Regla Falsa</a></li>
+							</ul>
+						</li>
+						<li><a class="drop" href="#">Ajuste de Curvas</a>
+							<ul>
+								<!--<li><a href="metodo-regresion-polinomial">Regresión Polinomial</a></li>-->
+								<li><a href="metodo-regresion-lineal">Regresión Lineal</a></li>
+								<li><a href="metodo-interpolacion-newton">Interpolación Newton</a></li>
+								<li><a href="metodo-interpolacion-lagrange">Interpolación Lagrange</a></li>
+								<!--<li><a href="metodo-minimos-cuadrados-continuos">Mínimos Continuos</a></li>-->
+								<li><a href="#">Mínimos Discretos</a></li>
+								<li><a href="metodo-spline">Spline</a></li>
+							</ul>
+						</li>
+						<li><a class="drop" href="#">Ecuaciones Diferenciales</a>
+							<ul>
+								<li><a href="../optimizacion/metodo-euler">Euler</a></li>
+								<!--<li><a href="../ecuacion-diferencial/metodo-runge-kuta">Runge-Kuta </a></li>-->
+								<!--<li><a href="../ecuacion-diferencial/metodo-heun">Método de Heun</a></li>-->
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</header>
+		</div>
+		<div class="wrapper row3">
+			<div class="container explicacion">
+				<h2 >Regresión lineal</h2><hr>
+				<p>
+					Aproximación discreta por mínimos cuadrados. En general, los problemas que aparecen en la ciencia nos enfrentan a la observación de cantidades que cambian en el tiempo y/o el espacio. Supongamos que este cambio puede ser modelado por una relación matemática y(x) =f(c1,...,cn;x) donde x es el parámetro que describe el cambio y c1,...,cn son n cantidades desconocidas, llamadas parámetros del modelo, cuyos valores queremos determinar. En particular consideremos el caso en que el modelo es lineal en sus parámetros, esto es, la relación funcional f es lineal respecto de los parámetros c1,...,cn y por lo tanto puede expresarse como:
+					<img src="../webapp/static/images/cuadradosDiscretos/picture1.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					para n funciones φj(x) del parámetro x. Un conjunto de m observaciones de f proveerá de valores medidos y i afectados de errores ∈<sub>i</sub>
+					<img src="../webapp/static/images/cuadradosDiscretos/picture2.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					Definiendo la matriz de diseño, m×n, A de elementos aij=φj(xi), el vector de parámetros, n×1, x de elementos ci, el vector de medidas, m×1, b de elementos yi, el vector de residuos, m×1, r de elementosi, el conjunto de ecuaciones anteriores puede escribirse matricialmente como:
+					<br><br>
+					<center>Ax+r=b.</center>	
+				</p>
+				<p>
+					Esta relación constituye nuestro modelo lineal de las observaciones. Si m≥n (más observaciones que parámetros) se trata ahora determinar el conjunto de parámetros x que satisfaga mejor, en algún sentido, el modelo lineal. De acuerdo al método de mínimos cuadrados, los estimadores de mínimos cuadrados de los parámetros son aquellos valores que minimizan la norma euclideana de los residuos.
+					<img src="../webapp/static/images/cuadradosDiscretos/picture3.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					Este requisito conduce a que la solución de mínimos cuadrados debe satisfacer las ecuaciones normales
+					<img src="../webapp/static/images/cuadradosDiscretos/picture4.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					de donde se sigue que, cuando  es no-singular, la solución de mínimos cuadrados existe y es única. La condición necesaria y suficiente para la existencia de una solución única es que las columnas de la matriz A sean linealmente independientes o, dicho en forma equivalente, que el rango de la matriz A sea n. En tal caso, es fácil ver que la matriz  es simétrica y definida positiva, con lo cual un método numérico apropiado para resolver las ecuaciones normales es el método de Choleski. Sin embargo, en la práctica, muy a menudo las columnas de A son aproximadamente linealmente dependientes lo cual conduce a un sistema de ecuaciones normales con una matriz mal condicionada. Por tal motivo resulta fundamental recurrir a otra forma de resolución numérica del problema. En particular el método QR evita la formación de las ecuaciones normales y garantizan la estabilidad de la solución frente a los errores de redondeo. Este método se basa en la existencia de la factorización QR de la matriz A m×n, cuando la misma es de rango n,
+					<br><br>
+					<center>A=QR,</center>
+				</p>
+				<p>
+					Siendo Q es una matriz m×n cuyas columnas son una base ortonormal del espacio columna de A (con lo cual =In) y R es una matriz cuadrada de orden n triangular superior con elementos positivos sobre la diagonal. En tal caso las ecuaciones normales toman la forma:
+					<img src="../webapp/static/images/cuadradosDiscretos/picture5.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					Es decir,
+					<img src="../webapp/static/images/cuadradosDiscretos/picture6.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					y como R es no-singular, se obtiene . Así, conocida la factorización QR de A, la solución de mínimos cuadrados resulta, pues, por sustitución hacia atrás del sistema triangular superior 
+					<img src="../webapp/static/images/cuadradosDiscretos/picture7.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					La teoría anterior puede ser aplicada en particular al caso en que la relación funcional del modelo lineal sea un polinomio de grado a lo más (n−1): 
+					<img src="../webapp/static/images/cuadradosDiscretos/picture8.png" alt="Ecuación inicial método secante">
+				</p>
+				<p>
+					En este caso la matriz A tiene elementos aij=xj−1i. Los estimadores de mínimos cuadrados conducen así al ajuste de los datos observacionales por un polinomio de mínimos cuadradados.
+				</p>
+			</div>
+			<main class="container clear"> 
+				<div class="btmspace-80 center">
+					<h2 class="font-x2 uppercase">Complete el formulario</h2><hr>
+					<section id="pageintro" class="container clear btminspace-0"> 
+						<div id="loader">
+							<div id="comments" style="margin: 0 auto; width:50%;">
+							<div id="formulario">
+								<div style="float:left; width:50%; padding:5px;">
+									<label>X1 <span>*</span></label>
+									<input type="text" class="valx" size="22">
+								</div>
+								<div style="float:left; width:50%; padding:5px;">
+									<label>Y1 <span>*</span></label>
+									<input type="text" class="valy" size="22">
+								</div>
+								<div style="float:left; width:50%; padding:5px;">
+									<label>X2 <span>*</span></label>
+									<input type="text" class="valx" size="22">
+								</div>
+								<div style="float:left; width:50%; padding:5px;">
+									<label>Y2 <span>*</span></label>
+									<input type="text" class="valy" size="22">
+								</div>
+							</div>
+								<div>
+	                            	<button style="margin-right:20px;" type="button" class="btn btn-danger" id="agregarPtox">Agregar nuevo punto</button>
+									<input id="btnEjecutar" type="submit" value="Ejecutar">
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</main>
+		</div>
+		<div class="wrapper row4" style="padding: 10px 0px;">
+			<footer id="footer" class="clear">
+				<h2 class="font-x2 uppercase" align="center">Equipo de Trabajo</h2><hr>
+					<div id="owl-demo">
+						<div class="item">
+							<img src="../webapp/static/images/pp44.jpg" alt="Owl Image">
+							<h6 class="title">Gustavo Gatica</h6>
+							<address class="btmspace-15">
+								Universidad Andrés Bello<br>
+								Profesor guía<br>
+								Curso Computación Científica<br>
+							</address>
+							<ul class="nospace">
+								<li><span class="fa fa-envelope-o"></span> ggatica@gmail.com</li>
+							</ul>
+						</div>
+						<div class="item">
+							<img src="../webapp/static/images/pp.jpg" alt="Owl Image">
+							<h6 class="title">JuanPablo Barahona</h6>
+							<address class="btmspace-15">
+							Estudiante Univerdad<br>
+							Ing. Computación e Informática<br>
+							U. Andrés Bello<br>
+							</address>
+							<ul class="nospace">
+								<li><span class="fa fa-envelope-o"></span> juanpablo.barahonaa@gmail.com</li>
+							</ul>
+						</div>
+						<div class="item">
+							<img src="../webapp/static/images/pp00.jpg" alt="Owl Image">
+							<h6 class="title">J. Antonio Lefimil</h6>
+							<address class="btmspace-15">
+							Estudiante Universidad<br>
+							Ing. Computación Científica<br>
+							Andrés Bello<br>
+							</address>
+							<ul class="nospace">
+								<li><span class="fa fa-envelope-o"></span> antonio.lefimil@gmail.com</li>
+							</ul>
+						</div>
+						<div class="item">
+							<img src="../webapp/static/images/pp2.jpg" alt="Owl Image">
+							<h6 class="title">Gonzalo Cifuentes</h6>
+							<address class="btmspace-15">
+							Estudiante Univerdad<br>
+							Ing. Computación e Informática<br>
+							U. Andrés Bello<br>
+							</address>
+							<ul class="nospace">
+								<li><span class="fa fa-envelope-o"></span> gonzalo.cifuentes@gmail.com</li>
+							</ul>
+						</div>
+						<div class="item">
+							<img src="../webapp/static/images/pp3.jpg" alt="Owl Image">
+							<h6 class="title">Alfredo González</h6>
+							<address class="btmspace-15">
+							Estudiante Universidad<br>
+							Ing. Computación Científica<br>
+							Andrés Bello<br>
+							</address>
+							<ul class="nospace">
+								<li><span class="fa fa-envelope-o"></span> alpihola@gmail.com</li>
+							</ul>
+						</div>
+						<div class="item">
+							<img src="../webapp/static/images/pp5.jpg" alt="Owl Image">
+							<h6 class="title">Matías Greco</h6>
+							<address class="btmspace-15">
+							Estudiante Univerdad<br>
+							Ing. Computación e Informática<br>
+							U. Andrés Bello<br>
+							</address>
+							<ul class="nospace">
+								<li><span class="fa fa-envelope-o"></span> m.grecochandia@gmail.com</li>
+							</ul>
+						</div>
+					</div>
+			</footer>
+		</div>
+		<div class="wrapper row5">
+		  <div id="copyright" class="clear"> 
+			<p class="fl_left">Copyright &copy; 2015 - All Rights Reserved - <a href="#">Domain Name</a></p>
+			<p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+		  </div>
+		</div>
+		<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+
+		<!-- JAVASCRIPTS -->
+		<script src="../webapp/static/js/jquery.min.js"></script> 
+		<script src="../webapp/static/js/jquery.backtotop.js"></script> 
+		<script src="../webapp/static/js/jquery.mobilemenu.js"></script>
+		<script src="../webapp/static/js/owl.carousel.js"></script>		
+		<script src="../webapp/static/js/common.js"></script>
+		<script src="../webapp/static/js/ccientificaalg.js"></script>
+		<script>
+			$(function(){
+				var i = 2;
+				$("#agregarPtox").click(function(){
+					i++;
+					$("#formulario").append(
+						'<div style="float:left; width:50%; padding:5px;"><label>X'+i+' <span>*</span></label><input type="text" class="valx" size="22"></div><div style="float:left; width:50%; padding:5px;"><label>Y'+i+' <span>*</span></label><input type="text" class="valy" size="22"></div>'
+						);
+				});
+			    $('#btnEjecutar').bind('click',function(event, ui){
+			    	ejecutarMinimos_cuadrados_discretos("Ajuste de curvas", "Minimos_cuadrados_discretos",i);
+			    });
+				$("#owl-demo").owlCarousel({
+				  autoPlay: 3000, //Set AutoPlay to 3 seconds
+				  items : 3,
+				  itemsDesktop : [1199,3],
+				  itemsDesktopSmall : [979,3]
+	
+				});
+			});
+		</script>
+	</body>
+</html>

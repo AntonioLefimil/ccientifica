@@ -1,0 +1,10 @@
+app/Biseccion
+app/Brent
+app/Punto_fijo
+app/Regla_falsa
+app/Secante
+app/Lagrange
+app/Regresion_lineal
+app/Interpolacion_newton
+app/Minimos_cuadrados_discretos
+app/Euler
